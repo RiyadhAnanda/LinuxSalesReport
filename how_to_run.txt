@@ -1,0 +1,37 @@
+Riyadh Ananda
+12-12-2022
+File describing how to work program
+
+Overview:
+	All manipulation functionality works
+	Capitalization/Spacing error in .rpt files-however, data is correct
+	Errors with MariaDB & Class-srv
+
+Contents:
+	(If nothing is removed) 
+	etl.sh is the driver script 
+	MOCK_MIX.1.csv will contain the unzipped MOCK_MIX.1.csv.bz2 file 
+	16 .tmp files used for data manipulation 
+	4 required .csv files 
+	2 required .rpt files  
+	directory named scripts that contain all functional scripts called by the driver script
+
+Running Program:
+	To run, call ./etl.sh MOCK_MIX.1.csv firstname lastname
+	-must call 'MOCK_MIX.1.csv' exactly;however, can use whatever names for first and last name
+	Will be prompted with "Would you like to pull MOCK_MIX.1.csv" as confirmation, input Y/y to continue, select n to exit
+	Succesful steps will then be output
+	Will then be prompted with "Would you like to remove Temporary Files?"-means all reports have successfully been generated
+	Select Y/y if you would like to remove the 16 temp files
+	Will then be prompted with "Would you like to remove CSV files?"- select Y/y if you would like to remove the 4 required .csv files
+	Will then be prompted with "Would you like to remove MOCK file?- if you would like to rerun program input Y/y here, however, if you want to check contents of MOCK just input no;however, you will have to rm MOCK... in order to rerun program
+
+Rerunning Program: 
+	To rerun, MOCK_MIX.1.csv can't be in directory so either remove it when prompted or do rm MOCK_MIX.1.csv
+
+Errors:
+	Characters are lowercase in .rpt files (data is correct)
+	Missing a blank line in transaction.rpt 
+	Missing header contents in purchase.rpt
+	Cannot call scp with user input, (scp is hard coded in the etl.sh driver file)
+	Cannot export transaction.csv or summary.csv into mariadb (tables are created and mariadb is successfully installed on system)
